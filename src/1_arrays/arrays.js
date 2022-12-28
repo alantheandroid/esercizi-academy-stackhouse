@@ -11,7 +11,10 @@ export function addToArrayEnd(array, newElement) {
 }
 
 // Inserire l'elemento all'inizio
-export function addToArrayBeginning(array, newElement) {}
+export function addToArrayBeginning(array, newElement) {
+  array.unshift(newElement);
+  return array;
+}
 
 // Inserire l'elemento all'indice specificato
 // Se l'indice è negativo, inserirlo all'inizio dell'array
