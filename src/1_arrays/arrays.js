@@ -5,7 +5,10 @@ export function cloneArray(array) {
 }
 
 // Inserire l'elemento alla fine
-export function addToArrayEnd(array, newElement) {}
+export function addToArrayEnd(array, newElement) {
+  array.push(newElement);
+  return array;
+}
 
 // Inserire l'elemento all'inizio
 export function addToArrayBeginning(array, newElement) {}
