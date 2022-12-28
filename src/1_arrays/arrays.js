@@ -1,5 +1,8 @@
 // Duplicare l'array
-export function cloneArray(array) {}
+export function cloneArray(array) {
+  const newArray = [...array];
+  return newArray;
+}
 
 // Inserire l'elemento alla fine
 export function addToArrayEnd(array, newElement) {}
