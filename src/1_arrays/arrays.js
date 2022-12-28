@@ -19,7 +19,16 @@ export function addToArrayBeginning(array, newElement) {
 // Inserire l'elemento all'indice specificato
 // Se l'indice è negativo, inserirlo all'inizio dell'array
 // Se l'indice è superiore alla lunghezza dell'array, inserirlo alla fine
-export function insertIntoArray(array, newElement, index) {}
+export function insertIntoArray(array, newElement, index) {
+  if (index < 0) {
+    array.unshift(newElement);
+  } else if (index > array.length) {
+    array.push(newElement);
+  } else {
+    array.splice(index, 0, newElement);
+  }
+  return array;
+}
 
 // Dato un array di oggetti, trovare l'elemento in base a `condition`
 // `condition` è un oggetto tipo { id: 46 } o { name: 'Anna' }
