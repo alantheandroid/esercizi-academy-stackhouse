@@ -42,7 +42,10 @@ export function findBy(array, condition) {
 
 // Come `findBy`, ma ritorna tutti gli elementi per i quali `condition` risulta vera
 // Se per nessun elemento risulta vera, ritornare un array vuoto
-export function filterBy(array, condition) {}
+export function filterBy(array, condition) {
+  const key = Object.keys(condition)[0];
+  return array.filter((user) => user[key] === condition[key]) || [];
+}
 
 // Dato un array e un elemento, se l'elemento non è presente nell'array va inserito alla fine
 // Se l'elemento è già presente, va rimosso
