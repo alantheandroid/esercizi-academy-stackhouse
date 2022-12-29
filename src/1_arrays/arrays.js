@@ -35,7 +35,10 @@ export function insertIntoArray(array, newElement, index) {
 // Nel primo caso `findBy` deve restituire il primo elemento che ha un id uguale a 46;
 // nel secondo caso il primo elemento che ha name uguale ad Anna
 // Restituire null se non viene trovato nulla
-export function findBy(array, condition) {}
+export function findBy(array, condition) {
+  const key = Object.keys(condition)[0];
+  return array.find((user) => user[key] === condition[key]) || null;
+}
 
 // Come `findBy`, ma ritorna tutti gli elementi per i quali `condition` risulta vera
 // Se per nessun elemento risulta vera, ritornare un array vuoto
