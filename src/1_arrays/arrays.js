@@ -49,7 +49,14 @@ export function filterBy(array, condition) {
 
 // Dato un array e un elemento, se l'elemento non è presente nell'array va inserito alla fine
 // Se l'elemento è già presente, va rimosso
-export function toggleArrayItem(array, element) {}
+export function toggleArrayItem(array, element) {
+  if (!array.includes(element)) {
+    array.push(element);
+  } else {
+    array = array.filter((prevElement) => prevElement !== element);
+  }
+  return array;
+}
 
 // Rimuove dall'array l'elemento all'indice specificato
 // Se l'indice è superiore o inferiore alla lunghezza dell'array, ritornare l'array originale
