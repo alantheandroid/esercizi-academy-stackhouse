@@ -68,7 +68,9 @@ export function removeFromArray(array, index) {
 }
 
 // Dati 2 o più array, unirli in un unico array
-export function mergeArrays(...arrays) {}
+export function mergeArrays(...arrays) {
+  return arrays.reduce((acc, curr) => acc.concat(curr), []);
+}
 
 // Dati 2 o più array, unirli in un unico array, ma rimuovere eventuali duplicati
 export function mergeArraysUnique(...arrays) {}
