@@ -80,7 +80,15 @@ export function mergeArraysUnique(...arrays) {}
 // Es.: [{ age: 44, name: 'Mary' }, { age: 22, name: 'John' }, { age: 31, name: 'Mark' }] con chiave age e direction DESC
 // restituisce [{ age: 44, name: 'Mary' }, { age: 31, name: 'Mark' }, { age: 22, name: 'John' }]
 // Nota: `key` farà sempre riferimento a valori numerici
-export function sortBy(array, key, direction) {}
+export function sortBy(array, key, direction) {
+  return array.sort((a, b) => {
+    if (direction === "ASC") {
+      return a[key] - b[key];
+    } else if (direction === "DESC") {
+      return b[key] - a[key];
+    }
+  });
+}
 
 // Dato un array di oggetti, convertirlo in oggetto e usare come chiave il valore di `key`
 // Es.: [{ id: 1, name: 'A' }, { id: 2, name: 'B' }] con key = 'name' deve restituire
