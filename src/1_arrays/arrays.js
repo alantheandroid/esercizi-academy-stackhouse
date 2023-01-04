@@ -105,7 +105,11 @@ export function replaceItemAtIndex(array, newItem, index) {
 // Es.: [{ id: 1, name: 'A' }, { id: 2, name: 'B' }] con properties { city: 'X', number: 99 }
 // deve restituire [{ id: 1, name: 'A', city: 'X', number: 99  }, { id: 2, name: 'B', city: 'X', number: 99 }]
 // L'array originale e i suoi elementi non devono essere modificati
-export function addExtraProperties(array, properties) {}
+export function addExtraProperties(array, properties) {
+  return array.map((item) => {
+    return (item = { ...item, ...properties });
+  });
+}
 
 // Dato un array di oggetti rimuovere da ciascuno di essi le proprietà specificate
 // Es.: [{ id: 1, name: 'A', city: 'X', state: 'Y' }] con properties ['city', 'state']
