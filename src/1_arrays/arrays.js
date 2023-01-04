@@ -96,7 +96,10 @@ export function sortBy(array, key, direction) {
 export function keyBy(array, key) {}
 
 // Dato un array, inserire il nuovo elemento all'indice specificato, sostituendo quello che c'è già
-export function replaceItemAtIndex(array, newItem, index) {}
+export function replaceItemAtIndex(array, newItem, index) {
+  array.splice(index, 1, newItem);
+  return array;
+}
 
 // Dato un array di oggetti, aggiungere a ogni oggetto le proprietà specificate
 // Es.: [{ id: 1, name: 'A' }, { id: 2, name: 'B' }] con properties { city: 'X', number: 99 }
