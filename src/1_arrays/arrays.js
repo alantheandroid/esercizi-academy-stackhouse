@@ -115,7 +115,16 @@ export function addExtraProperties(array, properties) {
 // Es.: [{ id: 1, name: 'A', city: 'X', state: 'Y' }] con properties ['city', 'state']
 // deve restituire [{ id: 1, name: 'A' }]
 // L'array originale e i suoi elementi non devono essere modificati
-export function removeProperties(array, properties) {}
+export function removeProperties(array, properties) {
+  return array.map((item) => {
+    const newItem = {};
+    const selectedKeys = Object.keys(item).filter(
+      (key) => !properties.includes(key)
+    );
+    selectedKeys.forEach((key) => (newItem[key] = item[key]));
+    return newItem;
+  });
+}
 
 // Dato un array di oggetti con una chiave id e un array di id selezionati,
 // ritornare un nuovo array in cui gli elementi selezionati hanno la proprietà `selected`= true
