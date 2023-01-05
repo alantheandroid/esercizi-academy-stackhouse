@@ -158,7 +158,9 @@ export function mapTo(array, key) {
 // e ritornare true se per TUTTI è valida, altrimenti ritornare false
 // Es.: [{ id: 1, age: 32 }, { id: 2, age: 29 }] con predicate = (item) => item.age > 30,
 // `areItemsValid` ritorna false perché non tutti gli elementi hanno `age` maggiore di 30
-export function areItemsValid(array, predicate) {}
+export function areItemsValid(array, predicate) {
+  return array.every(predicate);
+}
 
 // Dato un array di stringhe, un array di oggetti e una chiave, ritornare un nuovo array
 // dove ogni elemento del primo è sostuito col corrispondente elemento del secondo in base al valore di `key`
