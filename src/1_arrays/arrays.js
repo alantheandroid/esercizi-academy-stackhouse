@@ -44,7 +44,7 @@ export function findBy(array, condition) {
 // Se per nessun elemento risulta vera, ritornare un array vuoto
 export function filterBy(array, condition) {
   const key = Object.keys(condition)[0];
-  return array.filter((user) => user[key] === condition[key]) || [];
+  return array.filter((user) => user[key] === condition[key]);
 }
 
 // Dato un array e un elemento, se l'elemento non è presente nell'array va inserito alla fine
