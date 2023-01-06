@@ -182,7 +182,24 @@ export function getTotal(products, discounts) {}
 // Dentro ogni commento deve esserci un campo `user` con l'oggetto intero dell'utente che ha scritto il commento (corrispondente a `userId`, che va poi rimosso)
 // Se non ci sono commenti, comments deve essere un array vuoto
 // Controllare il risultato del test per vedere come deve essere l'array finale
-export function populatePosts(posts, comments, users) {}
+export function populatePosts(posts, comments, users) {
+  return posts.map((post) => {
+    post.user = users.find((user) => user.id === post.userId);
+    post.comments = comments
+      .filter((comment) => comment.postId === post.id)
+      .map((comment) => {
+        comment.user = users.find((user) => user.id === comment.userId);
+        return Object.fromEntries(
+          Object.entries(comment).filter(
+            ([key, value]) => key !== "postId" && key !== "userId"
+          )
+        );
+      });
+    return Object.fromEntries(
+      Object.entries(post).filter(([key, value]) => key !== "userId")
+    );
+  });
+}
 
 // Implementare il metodo nativo Array.map()
 export function map(array, mapper) {}
