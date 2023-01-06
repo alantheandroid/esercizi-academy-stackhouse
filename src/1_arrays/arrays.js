@@ -211,7 +211,15 @@ export function map(array, mapper) {
 }
 
 // Implementare il metodo nativo Array.filter()
-export function filter(array, predicate) {}
+export function filter(array, predicate) {
+  const newArray = [];
+  array.forEach((item, index) => {
+    if (predicate(item, index)) {
+      newArray.push(item);
+    }
+  });
+  return newArray;
+}
 
 // Implementare il metodo nativo Array.some()
 export function some(array, predicate) {}
