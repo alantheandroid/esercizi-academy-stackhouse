@@ -202,7 +202,13 @@ export function populatePosts(posts, comments, users) {
 }
 
 // Implementare il metodo nativo Array.map()
-export function map(array, mapper) {}
+export function map(array, mapper) {
+  const newArray = [];
+  array.forEach((item, index) => {
+    newArray.push(mapper(item, index));
+  });
+  return newArray;
+}
 
 // Implementare il metodo nativo Array.filter()
 export function filter(array, predicate) {}
