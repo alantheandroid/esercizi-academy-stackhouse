@@ -174,7 +174,17 @@ export function populate(array, dataArray, key) {}
 // calcolare il prezzo finale dei prodotti con l'eventuale sconto applicato,
 // considerando che ai prodotti con special = true si applica la percentuale specificata in discount.special,
 // agli altri prodotti la percentuale specificata in discounts.default
-export function getTotal(products, discounts) {}
+export function getTotal(products, discounts) {
+  /* return products.reduce((total, item) => {
+    const finalPrice = item.price;
+    if (discounts.special && item.special === true) {
+      finalPrice - (item.price * 100) / discounts.special;
+    } else if (discounts.default) {
+      finalPrice - (item.price * 100) / discounts.default;
+    }
+    return total + finalPrice * item.quantity;
+  }, 0); */
+}
 
 // Dati un array di post, di commenti e di utenti (vedere in mock.js), creare un nuovo array dove ogni post include:
 // - un campo `user` con l'oggetto intero dell'utente che corrisponde a `userId` (che va poi rimosso)
@@ -222,7 +232,13 @@ export function filter(array, predicate) {
 }
 
 // Implementare il metodo nativo Array.some()
-export function some(array, predicate) {}
+export function some(array, predicate) {
+  if (array.find((item) => predicate(item) === true)) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 // Implementare il metodo nativo Array.every()
 export function every(array, predicate) {}
