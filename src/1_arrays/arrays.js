@@ -241,7 +241,13 @@ export function some(array, predicate) {
 }
 
 // Implementare il metodo nativo Array.every()
-export function every(array, predicate) {}
+export function every(array, predicate) {
+  if (array.find((item) => predicate(item) === false)) {
+    return false;
+  } else {
+    return true;
+  }
+}
 
 // Implementare il metodo nativo Array.reduce()
 export function reduce(array, reducer, initialState) {}
