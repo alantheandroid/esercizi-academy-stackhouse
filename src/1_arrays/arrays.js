@@ -250,4 +250,10 @@ export function every(array, predicate) {
 }
 
 // Implementare il metodo nativo Array.reduce()
-export function reduce(array, reducer, initialState) {}
+export function reduce(array, reducer, initialState) {
+  /* let total = initialState ?? 0;
+  array.forEach((item, index) => {
+    total = reducer(total, item, index);
+  });
+  return total; */
+}

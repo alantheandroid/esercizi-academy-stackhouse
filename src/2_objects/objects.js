@@ -1,7 +1,10 @@
-import booleanIntersects from '@turf/boolean-intersects';
+import booleanIntersects from "@turf/boolean-intersects";
 
 // Clonare l'oggetto
-export function cloneObject(object) {}
+export function cloneObject(object) {
+  const newObject = { ...object };
+  return newObject;
+}
 
 // Unire i due oggetti in un unico, senza modificare gli oggetti originali
 export function mergeObjects(object1, object2) {}
