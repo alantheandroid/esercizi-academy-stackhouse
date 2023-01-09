@@ -46,7 +46,9 @@ export function getCachedValue(key, getValue, cache) {
 
 // Dato un array bidimensionale, dove ogni array interno è una coppia chiave-valore, convertirlo in un oggetto
 // Es.: [['name', 'John'], ['age', 22]] diventa { name: 'John', age: 22 }
-export function arrayToObject(array) {}
+export function arrayToObject(array) {
+  return Object.fromEntries(array);
+}
 
 // Come `arrayToObject`, ma tutti i valori di tipo array devono a loro volta essere trasformati in oggetti
 // Controllare il test per vedere dato iniziale e risultato finale
