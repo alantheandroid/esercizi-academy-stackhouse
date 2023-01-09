@@ -1,8 +1,8 @@
-import { geoJSON } from '../mock';
+import { geoJSON } from "../mock";
 import {
   cloneObject,
   mergeObjects,
-  setPropery,
+  setProperty,
   toArray,
   filterObject,
   arrayToObject,
@@ -15,71 +15,71 @@ import {
   get,
   createGeoJSON,
   highlightActiveFeatures,
-} from './objects';
+} from "./objects";
 
-describe('cloneObject', () => {
-  it('Clones a simple object making a separate copy', () => {
-    const object = { name: 'John', age: 33, address: '5th Avenue' };
+describe("cloneObject", () => {
+  it("Clones a simple object making a separate copy", () => {
+    const object = { name: "John", age: 33, address: "5th Avenue" };
     expect(cloneObject(object)).toEqual({
-      name: 'John',
+      name: "John",
       age: 33,
-      address: '5th Avenue',
+      address: "5th Avenue",
     });
     expect(cloneObject(object)).not.toBe(object);
   });
 });
 
-describe('mergeObjects', () => {
-  it('Correctly merges two objects', () => {
-    const object1 = { name: 'John', age: 33, address: '5th Avenue' };
-    const object2 = { city: 'Rome', state: 'Italy' };
+describe("mergeObjects", () => {
+  it("Correctly merges two objects", () => {
+    const object1 = { name: "John", age: 33, address: "5th Avenue" };
+    const object2 = { city: "Rome", state: "Italy" };
     expect(mergeObjects(object1, object2)).toEqual({
-      name: 'John',
+      name: "John",
       age: 33,
-      address: '5th Avenue',
-      city: 'Rome',
-      state: 'Italy',
+      address: "5th Avenue",
+      city: "Rome",
+      state: "Italy",
     });
-    expect(object1).toEqual({ name: 'John', age: 33, address: '5th Avenue' });
-    expect(object2).toEqual({ city: 'Rome', state: 'Italy' });
+    expect(object1).toEqual({ name: "John", age: 33, address: "5th Avenue" });
+    expect(object2).toEqual({ city: "Rome", state: "Italy" });
   });
 });
 
-describe('setProperty', () => {
-  it('Sets the specified property without modyfing the original object', () => {
-    const object = { name: 'John', age: 33, address: '5th Avenue' };
-    expect(setPropery(object, ['city', 'Rome'])).toEqual({
-      name: 'John',
+describe("setProperty", () => {
+  it("Sets the specified property without modyfing the original object", () => {
+    const object = { name: "John", age: 33, address: "5th Avenue" };
+    expect(setProperty(object, ["city", "Rome"])).toEqual({
+      name: "John",
       age: 33,
-      address: '5th Avenue',
-      city: 'Rome',
+      address: "5th Avenue",
+      city: "Rome",
     });
-    expect(object).toEqual({ name: 'John', age: 33, address: '5th Avenue' });
+    expect(object).toEqual({ name: "John", age: 33, address: "5th Avenue" });
   });
 });
 
-describe('toArray', () => {
-  it('Converts the object into an array, keeping the key', () => {
+describe("toArray", () => {
+  it("Converts the object into an array, keeping the key", () => {
     const object = {
-      shajsa1: { name: 'John', age: 33, address: '5th Avenue' },
-      sajhhu4: { name: 'Mary', age: 40, address: '3th Avenue' },
-      xsjwee5: { name: 'Philip', age: 21, address: '2th Avenue' },
+      shajsa1: { name: "John", age: 33, address: "5th Avenue" },
+      sajhhu4: { name: "Mary", age: 40, address: "3th Avenue" },
+      xsjwee5: { name: "Philip", age: 21, address: "2th Avenue" },
     };
     expect(toArray(object)).toEqual([
-      { key: 'shajsa1', name: 'John', age: 33, address: '5th Avenue' },
-      { key: 'sajhhu4', name: 'Mary', age: 40, address: '3th Avenue' },
-      { key: 'xsjwee5', name: 'Philip', age: 21, address: '2th Avenue' },
+      { key: "shajsa1", name: "John", age: 33, address: "5th Avenue" },
+      { key: "sajhhu4", name: "Mary", age: 40, address: "3th Avenue" },
+      { key: "xsjwee5", name: "Philip", age: 21, address: "2th Avenue" },
     ]);
   });
 });
 
-describe('filterObject', () => {
-  it('Filters an object - 1', () => {
+describe("filterObject", () => {
+  it("Filters an object - 1", () => {
     const object = {
-      productName: 'ABC',
+      productName: "ABC",
       quantity: 40,
       price: 99.8,
-      productDescription: 'Hello',
+      productDescription: "Hello",
       productId: 11,
     };
     expect(filterObject(object, (_, value) => Number.isFinite(value))).toEqual({
@@ -88,31 +88,31 @@ describe('filterObject', () => {
       productId: 11,
     });
     expect(object).toEqual({
-      productName: 'ABC',
+      productName: "ABC",
       quantity: 40,
       price: 99.8,
-      productDescription: 'Hello',
+      productDescription: "Hello",
       productId: 11,
     });
   });
 
-  it('Filters an object - 2', () => {
+  it("Filters an object - 2", () => {
     const object = {
-      category: 'ABC',
-      description: 'World',
+      category: "ABC",
+      description: "World",
       special: true,
       id: 99,
       items: [{ id: 22 }, { id: 99 }],
     };
     expect(
-      filterObject(object, (key, value) => key === 'id' || Array.isArray(value))
+      filterObject(object, (key, value) => key === "id" || Array.isArray(value))
     ).toEqual({
       id: 99,
       items: [{ id: 22 }, { id: 99 }],
     });
     expect(object).toEqual({
-      category: 'ABC',
-      description: 'World',
+      category: "ABC",
+      description: "World",
       special: true,
       id: 99,
       items: [{ id: 22 }, { id: 99 }],
@@ -120,67 +120,67 @@ describe('filterObject', () => {
   });
 });
 
-describe('getCachedValue', () => {
-  it('Caches the value correctly', () => {
+describe("getCachedValue", () => {
+  it("Caches the value correctly", () => {
     const cache = {};
 
     const getTotalValue = jest.fn(() => 99);
-    const getUserValue = jest.fn(() => 'John');
+    const getUserValue = jest.fn(() => "John");
 
-    expect(getCachedValue('total', getTotalValue, cache)).toEqual(99);
-    expect(getCachedValue('user', getUserValue, cache)).toEqual('John');
-    expect(getCachedValue('total', getTotalValue, cache)).toEqual(99);
-    expect(getCachedValue('total', getTotalValue, cache)).toEqual(99);
-    expect(getCachedValue('user', getUserValue, cache)).toEqual('John');
+    expect(getCachedValue("total", getTotalValue, cache)).toEqual(99);
+    expect(getCachedValue("user", getUserValue, cache)).toEqual("John");
+    expect(getCachedValue("total", getTotalValue, cache)).toEqual(99);
+    expect(getCachedValue("total", getTotalValue, cache)).toEqual(99);
+    expect(getCachedValue("user", getUserValue, cache)).toEqual("John");
 
     expect(getTotalValue).toHaveBeenCalledTimes(1);
     expect(getUserValue).toHaveBeenCalledTimes(1);
   });
 });
 
-describe('arrayToObject', () => {
-  it('Converts a two-dimensional array into an object', () => {
+describe("arrayToObject", () => {
+  it("Converts a two-dimensional array into an object", () => {
     const array = [
-      ['name', 'Mary'],
-      ['age', 44],
-      ['address', '6th Avenue'],
-      ['cars', [{ id: 'c1' }]],
+      ["name", "Mary"],
+      ["age", 44],
+      ["address", "6th Avenue"],
+      ["cars", [{ id: "c1" }]],
     ];
     expect(arrayToObject(array)).toEqual({
-      name: 'Mary',
+      name: "Mary",
       age: 44,
-      address: '6th Avenue',
-      cars: [{ id: 'c1' }],
+      address: "6th Avenue",
+      cars: [{ id: "c1" }],
     });
   });
 });
 
-describe('arrayToObjectDeep', () => {
-  it('Converts a n-dimensional array into an object, deeply', () => {
+describe("arrayToObjectDeep", () => {
+  it("Converts a n-dimensional array into an object, deeply", () => {
     const array = [
-      ['name', 'John'],
-      ['age', 22],
+      ["name", "John"],
+      ["age", 22],
       [
-        'car',
+        "car",
         [
-          ['year', 2000],
-          ['manufacturer', 'Ford'],
+          ["year", 2000],
+          ["manufacturer", "Ford"],
           [
-            'optionals',
+            "optionals",
             [
-              ['op1', true],
-              ['op2', false],
+              ["op1", true],
+              ["op2", false],
             ],
           ],
         ],
       ],
     ];
     const result = {
-      name: 'John',
+      name: "John",
       age: 22,
       car: {
         year: 2000,
-        manufacturer: 'Ford',
+        manufacturer: "Ford",
         optionals: { op1: true, op2: false },
       },
     };
@@ -188,15 +188,15 @@ describe('arrayToObjectDeep', () => {
   });
 });
 
-describe('hasValidProperty', () => {
+describe("hasValidProperty", () => {
   const object = {
-    name: 'Jane',
+    name: "Jane",
     age: 88,
-    children: [{ name: 'Igor' }],
+    children: [{ name: "Igor" }],
     pets: 3,
   };
 
-  it('Returns true with a valid property - 1', () => {
+  it("Returns true with a valid property - 1", () => {
     expect(
       hasValidProperty(
         object,
@@ -205,16 +205,16 @@ describe('hasValidProperty', () => {
     ).toEqual(true);
   });
 
-  it('Returns true with a valid property - 2', () => {
+  it("Returns true with a valid property - 2", () => {
     expect(
       hasValidProperty(
         object,
-        (key, value) => key === 'children' && value.length > 0
+        (key, value) => key === "children" && value.length > 0
       )
     ).toEqual(true);
   });
 
-  it('Returns false with no valid property', () => {
+  it("Returns false with no valid property", () => {
     expect(
       hasValidProperty(
         object,
@@ -224,63 +224,63 @@ describe('hasValidProperty', () => {
   });
 });
 
-describe('normalizeObject', () => {
-  it('Normalizes a simple object', () => {
+describe("normalizeObject", () => {
+  it("Normalizes a simple object", () => {
     const object = {
       id: 1,
-      carName: 'P1',
-      carDescription: 'Fast car',
+      carName: "P1",
+      carDescription: "Fast car",
       engine: {
         id: 9,
         horsepower: 400,
-        manufacturer: 'Ford',
+        manufacturer: "Ford",
       },
       owner: {
         id: 3,
-        name: 'William',
+        name: "William",
       },
     };
     const result = [
       {
         id: 1,
-        carName: 'P1',
-        carDescription: 'Fast car',
+        carName: "P1",
+        carDescription: "Fast car",
         engineId: 9,
         ownerId: 3,
       },
       {
-        3: { id: 3, name: 'William' },
-        9: { id: 9, horsepower: 400, manufacturer: 'Ford' },
+        3: { id: 3, name: "William" },
+        9: { id: 9, horsepower: 400, manufacturer: "Ford" },
       },
     ];
     expect(normalizeObject(object)).toEqual(result);
   });
 
-  it('Normalizes a complex object', () => {
+  it("Normalizes a complex object", () => {
     const object = {
       id: 1,
-      carName: 'P1',
-      carDescription: 'Fast car',
+      carName: "P1",
+      carDescription: "Fast car",
       engine: {
         id: 9,
         horsepower: 400,
         manufacturer: {
           id: 88,
-          name: 'Ford',
-          headquarters: 'USA',
+          name: "Ford",
+          headquarters: "USA",
           ceo: {
             id: 101,
-            name: 'Shrek',
+            name: "Shrek",
             dateOfBirth: 0,
           },
         },
       },
       owner: {
         id: 3,
-        name: 'William',
+        name: "William",
         cityOfBirth: {
           id: 44,
-          name: 'New York',
+          name: "New York",
           inhabitants: 20000,
         },
       },
@@ -288,17 +288,17 @@ describe('normalizeObject', () => {
     const result = [
       {
         id: 1,
-        carName: 'P1',
-        carDescription: 'Fast car',
+        carName: "P1",
+        carDescription: "Fast car",
         engineId: 9,
         ownerId: 3,
       },
       {
-        3: { id: 3, name: 'William', cityOfBirthId: 44 },
+        3: { id: 3, name: "William", cityOfBirthId: 44 },
         9: { id: 9, horsepower: 400, manufacturerId: 88 },
-        44: { id: 44, name: 'New York', inhabitants: 20000 },
-        88: { id: 88, name: 'Ford', headquarters: 'USA', ceoId: 101 },
-        101: { id: 101, name: 'Shrek', dateOfBirth: 0 },
+        44: { id: 44, name: "New York", inhabitants: 20000 },
+        88: { id: 88, name: "Ford", headquarters: "USA", ceoId: 101 },
+        101: { id: 101, name: "Shrek", dateOfBirth: 0 },
       },
     ];
     expect(normalizeObject(object)).toEqual(result);
@@ -306,96 +306,96 @@ describe('normalizeObject', () => {
 });
 
 const tree = {
-  value: 'A',
+  value: "A",
   children: [
     {
-      value: 'B',
+      value: "B",
       children: [
         {
-          value: 'E',
-          children: [{ value: 'K' }, { value: 'L' }, { value: 'M' }],
+          value: "E",
+          children: [{ value: "K" }, { value: "L" }, { value: "M" }],
         },
-        { value: 'F', children: [{ value: 'N' }, { value: 'O' }] },
+        { value: "F", children: [{ value: "N" }, { value: "O" }] },
       ],
     },
     {
-      value: 'C',
+      value: "C",
       children: [
-        { value: 'G', children: [{ value: 'P' }] },
-        { value: 'H', children: [{ value: 'Q' }, { value: 'R' }] },
+        { value: "G", children: [{ value: "P" }] },
+        { value: "H", children: [{ value: "Q" }, { value: "R" }] },
       ],
     },
     {
-      value: 'D',
+      value: "D",
       children: [
         {
-          value: 'I',
+          value: "I",
           children: [
-            { value: 'S' },
-            { value: 'T' },
-            { value: 'U', children: [{ value: 'X' }, { value: 'Y' }] },
+            { value: "S" },
+            { value: "T" },
+            { value: "U", children: [{ value: "X" }, { value: "Y" }] },
           ],
         },
-        { value: 'J', children: [{ value: 'V' }, { value: 'W' }] },
+        { value: "J", children: [{ value: "V" }, { value: "W" }] },
       ],
     },
   ],
 };
 
-describe('getTreeDepth', () => {
-  it('Gets the correct depth for the tree', () => {
+describe("getTreeDepth", () => {
+  it("Gets the correct depth for the tree", () => {
     expect(getTreeDepth(tree)).toEqual(5);
   });
 });
 
-describe('countTreeLeafNodes', () => {
-  it('Gets the correct number of leaf nodes', () => {
+describe("countTreeLeafNodes", () => {
+  it("Gets the correct number of leaf nodes", () => {
     expect(countTreeLeafNodes(tree)).toEqual(14);
   });
 });
 
-describe('get', () => {
+describe("get", () => {
   const object = {
-    name: 'Maria',
-    surname: 'Rossa',
+    name: "Maria",
+    surname: "Rossa",
     address: {
-      cities: ['Roma', 'Milano', 'Torino'],
-      country: { code: 'IT', fullName: 'Italia' },
+      cities: ["Roma", "Milano", "Torino"],
+      country: { code: "IT", fullName: "Italia" },
       isValid: false,
     },
   };
 
-  it('Returns a value in simple path', () => {
-    expect(get(object, 'name')).toEqual('Maria');
+  it("Returns a value in simple path", () => {
+    expect(get(object, "name")).toEqual("Maria");
   });
 
-  it('Returns a value in a nested path', () => {
-    expect(get(object, 'address.country.fullName')).toEqual('Italia');
+  it("Returns a value in a nested path", () => {
+    expect(get(object, "address.country.fullName")).toEqual("Italia");
   });
 
-  it('Returns a boolean value in a nested path', () => {
-    expect(get(object, 'address.isValid')).toEqual(false);
+  it("Returns a boolean value in a nested path", () => {
+    expect(get(object, "address.isValid")).toEqual(false);
   });
 
-  it('Returns a value in a nested path with arrays', () => {
-    expect(get(object, 'address.cities.1')).toEqual('Milano');
+  it("Returns a value in a nested path with arrays", () => {
+    expect(get(object, "address.cities.1")).toEqual("Milano");
   });
 
-  it('Returns the fallback value when the path does not exist', () => {
-    expect(get(object, 'movies.favorites', 'NO_RESULT')).toEqual('NO_RESULT');
+  it("Returns the fallback value when the path does not exist", () => {
+    expect(get(object, "movies.favorites", "NO_RESULT")).toEqual("NO_RESULT");
   });
 
-  it('Returns the fallback value when the path is partially valid', () => {
-    expect(get(object, 'address.number', 0)).toEqual(0);
+  it("Returns the fallback value when the path is partially valid", () => {
+    expect(get(object, "address.number", 0)).toEqual(0);
   });
 
-  it('Returns undefined when the path does not exist and no fallback is provided', () => {
-    expect(get(object, 'address.street.0')).toBeUndefined();
+  it("Returns undefined when the path does not exist and no fallback is provided", () => {
+    expect(get(object, "address.street.0")).toBeUndefined();
   });
 });
 
-describe('createGeoJSON', () => {
-  it('Creates a valid geoJSON', () => {
+describe("createGeoJSON", () => {
+  it("Creates a valid geoJSON", () => {
     const input = {
       pointsOfInterest: [
         {
@@ -403,13 +403,13 @@ describe('createGeoJSON', () => {
           coordinates: { lat: 46.0677293, lng: 11.1215698 },
         },
         {
-          name: 'Fontana del Nettuno',
+          name: "Fontana del Nettuno",
           coordinates: { lat: 44.49423, lng: 11.34267 },
         },
       ],
       streets: [
         {
-          name: 'Via Rodolfo Belenzani',
+          name: "Via Rodolfo Belenzani",
           polyline:
             '[{"id":15,"start":{"lng":11.1214686,"lat":46.0677385},"end":{"lng":11.121466,"lat":46.0677511}},{"id":55,"start":{"lng":11.121466,"lat":46.0677511},"end":{"lng":11.1213806,"lat":46.0681452}},{"id":23,"start":{"lng":11.1213806,"lat":46.0681452},"end":{"lng":11.1213548,"lat":46.0682642}},{"id":94,"start":{"lng":11.1213548,"lat":46.0682642},"end":{"lng":11.1213115,"lat":46.0684385}},{"id":17,"start":{"lng":11.1213115,"lat":46.0684385},"end":{"lng":11.1212897,"lat":46.0685261}},{"id":62,"start":{"lng":11.1212897,"lat":46.0685261},"end":{"lng":11.1212678,"lat":46.0686443}}]',
           extraProps: {
@@ -422,12 +422,12 @@ describe('createGeoJSON', () => {
   });
 });
 
-describe('highlightActiveFeatures', () => {
+describe("highlightActiveFeatures", () => {
   const input = [
-    ['point', [2, 1]],
-    ['point', [4, 3]],
+    ["point", [2, 1]],
+    ["point", [4, 3]],
     [
-      'line',
+      "line",
       [
         [1, 2],
         [3, 2],
@@ -437,27 +437,27 @@ describe('highlightActiveFeatures', () => {
     ],
   ];
 
-  it('Returns null if the point does not intersect anything', () => {
+  it("Returns null if the point does not intersect anything", () => {
     expect(highlightActiveFeatures(input, [10, 10])).toBeNull();
   });
 
-  it('Highlights the right feature with a single intersection', () => {
+  it("Highlights the right feature with a single intersection", () => {
     const expected = {
-      type: 'FeatureCollection',
+      type: "FeatureCollection",
       features: [
         {
-          type: 'Feature',
-          geometry: { type: 'Point', coordinates: [2, 1] },
+          type: "Feature",
+          geometry: { type: "Point", coordinates: [2, 1] },
         },
         {
-          type: 'Feature',
-          geometry: { type: 'Point', coordinates: [4, 3] },
+          type: "Feature",
+          geometry: { type: "Point", coordinates: [4, 3] },
         },
         {
-          type: 'Feature',
+          type: "Feature",
           properties: { highlighted: true },
           geometry: {
-            type: 'LineString',
+            type: "LineString",
             coordinates: [
               [1, 2],
               [3, 2],
@@ -471,24 +471,24 @@ describe('highlightActiveFeatures', () => {
     expect(highlightActiveFeatures(input, [2, 2])).toEqual(expected);
   });
 
-  it('Highlights the right features with multiple intersections', () => {
+  it("Highlights the right features with multiple intersections", () => {
     const expected = {
-      type: 'FeatureCollection',
+      type: "FeatureCollection",
       features: [
         {
-          type: 'Feature',
-          geometry: { type: 'Point', coordinates: [2, 1] },
+          type: "Feature",
+          geometry: { type: "Point", coordinates: [2, 1] },
         },
         {
-          type: 'Feature',
+          type: "Feature",
           properties: { highlighted: true },
-          geometry: { type: 'Point', coordinates: [4, 3] },
+          geometry: { type: "Point", coordinates: [4, 3] },
         },
         {
-          type: 'Feature',
+          type: "Feature",
           properties: { highlighted: true },
           geometry: {
-            type: 'LineString',
+            type: "LineString",
             coordinates: [
               [1, 2],
               [3, 2],

@@ -14,7 +14,10 @@ export function mergeObjects(object1, object2) {
 
 // Dato un oggetto e un array con chiave-valore, aggiungere chiave-valore all'oggetto
 // senza modificare l'originale, ma restituendo una copia
-export function setPropery(object, [key, value]) {}
+export function setProperty(object, [key, value]) {
+  const newObj = { ...object, [key]: value };
+  return newObj;
+}
 
 // Convertire un oggetto contentene altri oggetti in array
 // La chiave di ciascun oggetto va inserita nell'oggetto stesso come `key`
