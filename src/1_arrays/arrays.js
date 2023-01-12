@@ -185,15 +185,15 @@ export function populate(array, dataArray, key) {
 // considerando che ai prodotti con special = true si applica la percentuale specificata in discount.special,
 // agli altri prodotti la percentuale specificata in discounts.default
 export function getTotal(products, discounts) {
-  /* return products.reduce((total, item) => {
-    const finalPrice = item.price;
+  return products.reduce((total, item) => {
+    let finalPrice = item.price;
     if (discounts.special && item.special === true) {
-      finalPrice - (item.price * 100) / discounts.special;
+      finalPrice = item.price - (item.price / 100) * discounts.special;
     } else if (discounts.default) {
-      finalPrice - (item.price * 100) / discounts.default;
+      finalPrice = item.price - (item.price / 100) * discounts.default;
     }
     return total + finalPrice * item.quantity;
-  }, 0); */
+  }, 0);
 }
 
 // Dati un array di post, di commenti e di utenti (vedere in mock.js), creare un nuovo array dove ogni post include:
