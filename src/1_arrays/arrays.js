@@ -93,7 +93,13 @@ export function sortBy(array, key, direction) {
 // Dato un array di oggetti, convertirlo in oggetto e usare come chiave il valore di `key`
 // Es.: [{ id: 1, name: 'A' }, { id: 2, name: 'B' }] con key = 'name' deve restituire
 // { A: { id: 1, name: 'A' }, B: { id: 2, name: 'B' } }
-export function keyBy(array, key) {}
+export function keyBy(array, key) {
+  return Object.fromEntries(
+    array.map((item) => {
+      return [item[key], item];
+    })
+  );
+}
 
 // Dato un array, inserire il nuovo elemento all'indice specificato, sostituendo quello che c'è già
 export function replaceItemAtIndex(array, newItem, index) {
