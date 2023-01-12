@@ -1,7 +1,6 @@
 // Duplicare l'array
 export function cloneArray(array) {
-  const newArray = [...array];
-  return newArray;
+  return [...array];
 }
 
 // Inserire l'elemento alla fine
