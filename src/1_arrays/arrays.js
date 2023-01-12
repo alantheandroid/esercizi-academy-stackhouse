@@ -167,7 +167,11 @@ export function areItemsValid(array, predicate) {
 // Es. array = ['11', '22', '33'], dataArray = [{ id: '33', name: 'A' }, { id: '11', name: 'B' }, { id: '22', name: 'C' }], key = 'id'
 // `populate` reve restituire [{ id: '11', name: 'B' }, { id: '22', name: 'C' }, { id: '33', name: 'A' }]
 // perché '11' nel primo array corrisponde con l'oggetto che ha id = '11' nel secondo array e così via
-export function populate(array, dataArray, key) {}
+export function populate(array, dataArray, key) {
+  return array.map((item) => {
+    return dataArray.find((obj) => obj[key] === item);
+  });
+}
 
 // Dato un array products del tipo { product: 'A', price: 100, quantity: 1, special: true }
 // e un oggetto discounts del tipo { default: 10, special: 20 } (dove sia default sia special potrebbero non esserci),
