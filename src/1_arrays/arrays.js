@@ -102,8 +102,13 @@ export function keyBy(array, key) {
 
 // Dato un array, inserire il nuovo elemento all'indice specificato, sostituendo quello che c'è già
 export function replaceItemAtIndex(array, newItem, index) {
-  array.splice(index, 1, newItem);
-  return array;
+  return array.map((item, idx) => {
+    if (idx === index) {
+      return newItem;
+    } else {
+      return item;
+    }
+  });
 }
 
 // Dato un array di oggetti, aggiungere a ogni oggetto le proprietà specificate
