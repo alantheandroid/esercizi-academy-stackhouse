@@ -72,7 +72,11 @@ export function mergeArrays(...arrays) {
 }
 
 // Dati 2 o più array, unirli in un unico array, ma rimuovere eventuali duplicati
-export function mergeArraysUnique(...arrays) {}
+export function mergeArraysUnique(...arrays) {
+  return Array.from(
+    new Set(arrays.reduce((acc, curr) => acc.concat(curr), []))
+  );
+}
 
 // Dato un array di oggetti, una chiave e una direzione (ASC | DESC), ordinare l'array in base ai valori della chiave specificata
 // Se `direction` è ASC l'ordine deve essere ascendente, se è DESC discendente
