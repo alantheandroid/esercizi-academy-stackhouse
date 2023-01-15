@@ -19,7 +19,13 @@ export function setProperty(object, [key, value]) {
 // Convertire un oggetto contentene altri oggetti in array
 // La chiave di ciascun oggetto va inserita nell'oggetto stesso come `key`
 // Es.: { a: { name: 'X' }, b: { name: 'Y' } } diventa [{ key: 'a', name: 'X' }, b: { key: 'b', name: 'Y' }]
-export function toArray(object) {}
+export function toArray(object) {
+  const newArray = [];
+  for (let key in object) {
+    newArray.push({ key, ...object[key] });
+  }
+  return newArray;
+}
 
 // Dato un oggetto, restituire un nuovo oggetto mantenendo
 // soltanto le chiavi i cui valori soddisfano la funzione `predicate` (a cui bisogna passare sia la chiave, sia il valore)
