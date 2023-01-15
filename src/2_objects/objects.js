@@ -55,7 +55,16 @@ export function arrayToObject(array) {
 
 // Come `arrayToObject`, ma tutti i valori di tipo array devono a loro volta essere trasformati in oggetti
 // Controllare il test per vedere dato iniziale e risultato finale
-export function arrayToObjectDeep(array) {}
+export function arrayToObjectDeep(array) {
+  return array.reduce((obj, [key, value]) => {
+    if (!Array.isArray(value)) {
+      obj[key] = value;
+    } else {
+      obj[key] = arrayToObjectDeep(value);
+    }
+    return obj;
+  }, {});
+}
 
 // Dato un oggetto e una funzione `predicate` da chiamare con la coppia chiave-valore,
 // restituire true se almeno una delle proprietà dell'oggetto soddisfa la funzione `predicate`.
