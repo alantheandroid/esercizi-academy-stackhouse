@@ -7,8 +7,7 @@ export function cloneObject(object) {
 
 // Unire i due oggetti in un unico, senza modificare gli oggetti originali
 export function mergeObjects(object1, object2) {
-  const mergedObj = { ...object1, ...object2 };
-  return mergedObj;
+  return { ...object1, ...object2 };
 }
 
 // Dato un oggetto e un array con chiave-valore, aggiungere chiave-valore all'oggetto
