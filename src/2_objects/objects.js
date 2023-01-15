@@ -70,7 +70,9 @@ export function arrayToObjectDeep(array) {
 // restituire true se almeno una delle proprietà dell'oggetto soddisfa la funzione `predicate`.
 // Es.: { name: 'Mary', age: 99, children: 4 } con predicate = (key, value) => value > 10
 // ritorna true perché è presente una proprietà maggiore di 10 (age)
-export function hasValidProperty(object, predicate) {}
+export function hasValidProperty(object, predicate) {
+  return Object.entries(object).some(([key, value]) => predicate(key, value));
+}
 
 // Dato un oggetto, estrarre tutti i valori che sono a loro volta oggetti in un oggetto separato, usando come chiave il loro id;
 // rimuovere la chiave nell'oggetto di partenza e sostituirla con `{nome_chiave}Id` e usare come valore l'id dell'oggetto estratto.
