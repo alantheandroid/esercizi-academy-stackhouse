@@ -49,7 +49,13 @@ export const removeAddressCoordinates = (users) => {
 };
 
 // Ritornare l'array di utenti senza company
-export const removeCompanyInfo = (users) => {};
+export const removeCompanyInfo = (users) => {
+  return users.map((user) => {
+    return Object.fromEntries(
+      Object.entries(user).filter(([key, _]) => key != "company")
+    );
+  });
+};
 
 // Aggiungere newUser a users e ritornare l'array
 export const addNewUser = (users, newUser) => {};
