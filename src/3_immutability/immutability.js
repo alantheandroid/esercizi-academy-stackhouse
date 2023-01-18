@@ -42,7 +42,11 @@ export const changeUsersAddress = (users, addressChanges) => {
 };
 
 // Ritornare l'array di utenti senza geo in address
-export const removeAddressCoordinates = (users) => {};
+export const removeAddressCoordinates = (users) => {
+  return users.map((user) => {
+    return { ...user, address: { ...user.address, geo: undefined } };
+  });
+};
 
 // Ritornare l'array di utenti senza company
 export const removeCompanyInfo = (users) => {};
