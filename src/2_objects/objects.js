@@ -20,11 +20,9 @@ export function setProperty(object, [key, value]) {
 // La chiave di ciascun oggetto va inserita nell'oggetto stesso come `key`
 // Es.: { a: { name: 'X' }, b: { name: 'Y' } } diventa [{ key: 'a', name: 'X' }, b: { key: 'b', name: 'Y' }]
 export function toArray(object) {
-  const newArray = [];
-  for (let key in object) {
-    newArray.push({ key, ...object[key] });
-  }
-  return newArray;
+  return Object.entries(object).map(
+    ([key, value]) => (value = { ...value, key: key })
+  );
 }
 
 // Dato un oggetto, restituire un nuovo oggetto mantenendo
