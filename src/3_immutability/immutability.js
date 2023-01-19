@@ -63,7 +63,9 @@ export const removeCompanyInfo = (users) => {
 };
 
 // Aggiungere newUser a users e ritornare l'array
-export const addNewUser = (users, newUser) => {};
+export const addNewUser = (users, newUser) => {
+  return [...users, newUser];
+};
 
 // Ritornare l'array di utenti con lat e lng dentro geo convertiti in numero, non stringa
 export const convertUsersGeoToNumber = (users) => {};
