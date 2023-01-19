@@ -44,7 +44,12 @@ export const changeUsersAddress = (users, addressChanges) => {
 // Ritornare l'array di utenti senza geo in address
 export const removeAddressCoordinates = (users) => {
   return users.map((user) => {
-    return { ...user, address: { ...user.address, geo: undefined } };
+    return {
+      ...user,
+      address: Object.fromEntries(
+        Object.entries(user.address).filter(([key, _]) => key != "geo")
+      ),
+    };
   });
 };
 
